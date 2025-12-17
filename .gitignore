@@ -1,0 +1,73 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Model outputs (large files)
+outputs/
+qwen3_coffee_sft/
+*.safetensors
+*.bin
+*.pt
+*.pth
+optimizer.pt
+scheduler.pt
+rng_state.pth
+training_args.bin
+
+# Checkpoints
+checkpoint-*/
+
+# Logs
+logs/
+*.log
+wandb/
+runs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+*.env
+secrets.yaml
+
+# Temporary files
+tmp/
+temp/
+*.tmp

@@ -1,0 +1,61 @@
+# Qwen3 Coffee Order SFT Training Configuration
+
+# Model settings
+model:
+  name: "Qwen/Qwen3-1.7B"
+  trust_remote_code: true
+  torch_dtype: "float32"  # Use float32 for MPS compatibility
+
+# Data settings
+data:
+  train_file: "data/coffee_order_zhtw.jsonl"
+  max_length: 512
+  test_size: 0.1
+  seed: 42
+
+# Training hyperparameters
+training:
+  output_dir: "./outputs/qwen3_coffee_sft"
+  num_train_epochs: 3
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 16
+  learning_rate: 5.0e-6
+  weight_decay: 0.01
+  warmup_ratio: 0.1
+  lr_scheduler_type: "cosine"
+  max_grad_norm: 1.0
+  
+  # Logging & saving
+  logging_steps: 10
+  save_strategy: "epoch"
+  eval_strategy: "epoch"
+  save_total_limit: 2
+  load_best_model_at_end: true
+  metric_for_best_model: "eval_loss"
+  greater_is_better: false
+  
+  # Precision settings (MPS compatible)
+  fp16: false
+  bf16: false
+  
+  # Other settings
+  dataloader_pin_memory: false
+  remove_unused_columns: false
+  report_to: "none"
+  optim: "adamw_torch"
+
+# HuggingFace Hub settings
+hub:
+  push_to_hub: true
+  hub_strategy: "end"
+  hub_private_repo: false
+  # Set these in your notebook or environment
+  # hub_model_id: "your-username/qwen3-1.7b-coffee-sft"
+
+# Generation settings (for inference)
+generation:
+  max_new_tokens: 128
+  do_sample: true
+  temperature: 0.7
+  top_p: 0.9
